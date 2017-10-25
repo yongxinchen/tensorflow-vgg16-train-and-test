@@ -196,6 +196,7 @@ def train_network(graph, batch_size, num_epochs, pb_file_path):
         epoch_delta = 2
         for epoch_index in range(num_epochs):
             for i in range(12):
+                print('range: %s' % (i))
                 sess.run([graph['optimize']], feed_dict={
                     graph['x']: np.reshape(x_train[i], (1, 200, 200, 3)),
                     graph['y']: ([[1, 0]] if y_train[i] == 0 else [[0, 1]])
