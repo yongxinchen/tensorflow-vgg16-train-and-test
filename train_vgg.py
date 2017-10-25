@@ -197,7 +197,7 @@ def train_network(graph, batch_size, num_epochs, pb_file_path):
         for epoch_index in range(num_epochs):
             for i in range(12):
                 sess.run([graph['optimize']], feed_dict={
-                    graph['x']: np.reshape(x_train[i], (1, 224, 224, 3)),
+                    graph['x']: np.reshape(x_train[i], (1, 200, 200, 3)),
                     graph['y']: ([[1, 0]] if y_train[i] == 0 else [[0, 1]])
                 })
             if epoch_index % epoch_delta == 0:
@@ -206,11 +206,11 @@ def train_network(graph, batch_size, num_epochs, pb_file_path):
                 total_cost_in_train_set = 0.
                 for i in range(12):
                     return_correct_times_in_batch = sess.run(graph['correct_times_in_batch'], feed_dict={
-                        graph['x']: np.reshape(x_train[i], (1, 224, 224, 3)),
+                        graph['x']: np.reshape(x_train[i], (1, 200, 200, 3)),
                         graph['y']: ([[1, 0]] if y_train[i] == 0 else [[0, 1]])
                     })
                     mean_cost_in_batch = sess.run(graph['cost'], feed_dict={
-                        graph['x']: np.reshape(x_train[i], (1, 224, 224, 3)),
+                        graph['x']: np.reshape(x_train[i], (1, 200, 200, 3)),
                         graph['y']: ([[1, 0]] if y_train[i] == 0 else [[0, 1]])
                     })
                     total_batches_in_train_set += 1
@@ -223,11 +223,11 @@ def train_network(graph, batch_size, num_epochs, pb_file_path):
                 total_cost_in_test_set = 0.
                 for i in range(3):
                     return_correct_times_in_batch = sess.run(graph['correct_times_in_batch'], feed_dict={
-                        graph['x']: np.reshape(x_val[i], (1, 224, 224, 3)),
+                        graph['x']: np.reshape(x_val[i], (1, 200, 200, 3)),
                         graph['y']: ([[1, 0]] if y_val[i] == 0 else [[0, 1]])
                     })
                     mean_cost_in_batch = sess.run(graph['cost'], feed_dict={
-                        graph['x']: np.reshape(x_val[i], (1, 224, 224, 3)),
+                        graph['x']: np.reshape(x_val[i], (1, 200, 200, 3)),
                         graph['y']: ([[1, 0]] if y_val[i] == 0 else [[0, 1]])
                     })
                     total_batches_in_test_set += 1
