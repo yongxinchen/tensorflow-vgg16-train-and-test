@@ -9,9 +9,9 @@ from skimage import io, transform
 from tensorflow.python.framework import graph_util
 import collections
 
-path = 'vgg16/picture/'
-w = 224
-h = 224
+path = 'tf_files/imgs/'
+w = 200
+h = 200
 c = 3
 
 def read_img(path):
@@ -252,9 +252,9 @@ def main():
     batch_size = 12
     num_epochs = 50
 
-    pb_file_path = "vggs.pb"
+    pb_file_path = "qr.pb"
 
-    g = build_network(height=224, width=224, channel=3)
+    g = build_network(height=200, width=200, channel=3)
     train_network(g, batch_size, num_epochs, pb_file_path)
 
 main()
