@@ -9,7 +9,7 @@ from skimage import io, transform
 from tensorflow.python.framework import graph_util
 import collections
 
-path = './tf_files/imgs/'
+path = 'imgs/'
 w = 200
 h = 200
 c = 3
